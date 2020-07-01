@@ -1,7 +1,6 @@
 import express, { Request, Response } from "express";
 import * as bodyParser from "body-parser";
 import cors from "cors";
-import { getResponse } from "./bot";
 import MessagingController from "./services/messaging";
 
 const app = express();

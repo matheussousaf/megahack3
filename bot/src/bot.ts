@@ -1,5 +1,3 @@
-import { response } from "express";
-
 const dialogflow = require("@google-cloud/dialogflow");
 const uuid = require("uuid");
 
