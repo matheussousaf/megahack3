@@ -4,11 +4,12 @@ import {
   Unique,
   CreateDateColumn,
   UpdateDateColumn,
+  Entity,
 } from "typeorm";
 import { Length } from "class-validator";
 import * as bcrypt from "bcryptjs";
 
-@Unique(["whatsappNumber"])
+@Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -16,6 +17,10 @@ export class User {
   @Column()
   @Length(4, 100)
   name: string;
+
+  @Column()
+  @Length(4, 100)
+  email: string;
 
   @Column()
   @Length(4, 100)
