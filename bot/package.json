@@ -29,6 +29,7 @@
     "uuid": "^8.2.0"
   },
   "scripts": {
+    "gcp": "node src/config/gcpSetup.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "dev": "ts-node-dev --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
     "start": "node dist/server.js"

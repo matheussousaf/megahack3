@@ -9,7 +9,6 @@ RUN yarn
 COPY . .
 
 RUN yarn build
-RUN yarn gcp
 
 EXPOSE 4000
 CMD [ "node", "dist/server.js" ]
