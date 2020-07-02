@@ -2,3 +2,5 @@ node_modules
 dist
 credentials.json
 .env
+.env.default
+credentials.json
