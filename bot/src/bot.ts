@@ -1,10 +1,6 @@
 const dialogflow = require("@google-cloud/dialogflow");
 const uuid = require("uuid");
 
-/**
- * Tenta pegar uma resposta baseada na pergunta do usuário.
- * @param {string} message A mensagem a ser respondida
- */
 export async function getResponse(message: string) {
   const sessionId = uuid.v4();
 

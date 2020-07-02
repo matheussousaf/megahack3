@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import * as bodyParser from "body-parser";
 import cors from "cors";
-import MessagingController from "./services/messaging";
+import MessagingController from "./controllers/MessagingController";
 
 require("dotenv").config();
 
@@ -18,5 +18,7 @@ app.get("/", (request: Request, response: Response) =>
 
 app.post("/", MessagingController.receiveMessage);
 
-console.log(`Server running at port ${PORT}`);
-app.listen(PORT);
+app.post("/send", MessagingController.sendMessage);
+
+app.listen(PORT || 3334);
+console.log(`Server running at port ${PORT || 3334}`);
