@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import client = require("twilio");
+import twilio from 'twilio';
 import { getResponse } from "../bot";
 require("dotenv").config();
 
@@ -17,6 +17,17 @@ class MessagingController {
     res.end(twiml.toString());
   };
 
+  static testReceive = async (request: Request, res: Response) => {
+    const twiml = new MessagingResponse();
+    const { message } = request.body;
+
+    const response = await getResponse(message);
+
+    twiml.message(response);
+    res.writeHead(200, { "Content-Type": "text/xml" });
+    res.end(twiml.toString());
+  }
+
   static sendMessage = async (request: Request, res: Response) => {
     const { to, message } = request.body;
 
@@ -28,10 +39,10 @@ class MessagingController {
     const accountSid = process.env.TWILIO_SID;
     const token = process.env.TWILIO_TOKEN;
 
-    const twilio = client(accountSid, token);
+    const twilioClient = twilio(accountSid, token);
 
     // Sending message
-    twilio.messages.create({
+    twilioClient.messages.create({
       from: "whatsapp:+14155238886",
       to: `whatsapp:+${to}`,
       body: message,

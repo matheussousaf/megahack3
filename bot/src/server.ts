@@ -20,5 +20,7 @@ app.post("/", MessagingController.receiveMessage);
 
 app.post("/send", MessagingController.sendMessage);
 
+app.post("/test", MessagingController.testReceive);
+
 app.listen(PORT || 3334);
 console.log(`Server running at port ${PORT || 3334}`);
