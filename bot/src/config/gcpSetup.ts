@@ -8,4 +8,5 @@ console.log(currentPath + `/credentials.json`);
 
 fs.writeFile(currentPath + `/credentials.json`, process.env.GOOGLE_CREDENTIALS, (err) => {
     console.log("Criando credenciais");
+    console.log("Env:" + process.env.GOOGLE_CREDENTIALS);
 })

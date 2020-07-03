@@ -1,9 +1,12 @@
-import { response } from "express";
-
 const dialogflow = require("@google-cloud/dialogflow");
 const uuid = require("uuid");
 
 let contexts = []
+
+interface Response {
+  body: string;
+  intent: string;
+}
 
 export async function getResponse(message: string) {
   const sessionId = uuid.v4();
@@ -45,8 +48,15 @@ export async function getResponse(message: string) {
   }
 
   const responses = await sessionClient.detectIntent(request);
+
   if(responses[0].queryResult.outputContexts) {
     contexts = responses[0].queryResult.outputContexts;
   }
-  return responses[0].queryResult.fulfillmentText;
+
+  const response: Response = {
+    body: responses[0].queryResult.fulfillmentText,
+    intent: responses[0].queryResult.intent.displayName 
+  }
+
+  return response;
 }
