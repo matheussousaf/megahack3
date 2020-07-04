@@ -22,7 +22,7 @@ class MessagingController {
     if (response.intent === "Default Welcome Intent") {
       twilioClient.messages.create({
         mediaUrl: [
-          "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+          "https://lh3.googleusercontent.com/MKFOXKJRiXkd1VfeU8qX38zjMnMmut3UppdYTXcOHKRkVvmfk-ECy7pd3de6kTz5Sq4=s180-rw",
         ],
         from: "whatsapp:+14155238886",
         to: `${From}`,
