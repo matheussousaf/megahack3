@@ -5,27 +5,30 @@ require("dotenv").config();
 
 class MessagingController {
   static receiveMessage = async (request: Request, res: Response) => {
-    const { Body, From } = request.body;
+    try {
+      const { Body, From } = request.body;
 
-    const whatsappService = useWhatsappService();
+      const whatsappService = useWhatsappService();
 
-    const response = await getResponse(Body);
-    // to: "whatsapp:+558398949349",
+      const response = await getResponse(Body);
 
-    if (response.intent === "Default Welcome Intent") {
-      whatsappService.sendMediaMessage(From, response.body, [
-        "https://static.intercomassets.com/avatars/1980366/square_128/Ottos_para_whatsapp-01-1561732255.png?1561732255",
-      ]);
-      res.status(204).send();
-      return
+      if (response.intent === "Default Welcome Intent") {
+        whatsappService.sendMediaMessage(From, response.body, [
+          "https://static.intercomassets.com/avatars/1980366/square_128/Ottos_para_whatsapp-01-1561732255.png?1561732255",
+        ]);
+        res.status(204).send();
+        return;
+      }
+
+      const parsedResponse = whatsappService.incomingMessageFromEndpoint(
+        response.body
+      );
+
+      res.writeHead(200, { "Content-Type": "text/xml" });
+      res.end(parsedResponse);
+    } catch (error) {
+      console.log(error);
     }
-
-    const parsedResponse = whatsappService.incomingMessageFromEndpoint(
-      response.body
-    );
-
-    res.writeHead(200, { "Content-Type": "text/xml" });
-    res.end(parsedResponse);
   };
 
   static testReceive = async (request: Request, res: Response) => {
@@ -45,7 +48,7 @@ class MessagingController {
         ]
       );
       res.status(204).send();
-      return
+      return;
     }
 
     const parsedResponse = whatsappService.incomingMessageFromEndpoint(

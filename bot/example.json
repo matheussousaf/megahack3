@@ -1,0 +1,26 @@
+{
+  "text": "Olha que questão massa!",
+  "media": [
+    {
+      "type": "question",
+      "content": {
+        "subject": "Matemática",
+        "question": "Essa é a pergunta",
+        "alternatives": [
+          "Essa é a primeira",
+          "Essa é a segunda",
+          "Essa é a terceira",
+          "Essa é a quarta"
+        ],
+        "answer": 0,
+        "reward": 100
+      }
+    },
+    {
+      "content": {
+        "url": "https://kdosakldsa.com/jasdlidas.png"
+      },
+      "type": "image"
+    }
+  ]
+}

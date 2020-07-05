@@ -6,6 +6,16 @@ interface Body {
   media: string[];
 }
 
+interface Media {
+  content: object;
+  type: string;
+}
+
+interface Message {
+  text: string;
+  media: Media | {};
+}
+
 export const useSocket = (app: any, port: string) => {
   const http = require("http").createServer(app);
   const io = socket(http);
@@ -17,10 +27,30 @@ export const useSocket = (app: any, port: string) => {
     socket.on("message", async (message: Body) => {
       console.log("Mensagem que chegou: ", message);
 
-      const response = await getResponse(message.text);
-      console.log(response);
+      try {
+        if (message.text) {
+          const response = await getResponse(message.text);
+          let content: Message = {
+            text: response.body,
+            media: {},
+          };
 
-      socket.emit("response", response);
+          if (response.intent === "Make an Activity") {
+            console.log("Opa");
+            content.media = {
+              type: "question",
+              subject: "Matemática",
+              question: "Quanto é 2 mais 3",
+              alternatives: ["A) 2", "B) 3", "C) 4", "D) 5"],
+              answer: 3
+            };
+          }
+
+          socket.emit("response", content);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     });
   });
 
