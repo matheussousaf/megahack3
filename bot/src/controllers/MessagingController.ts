@@ -14,10 +14,10 @@ class MessagingController {
 
     if (response.intent === "Default Welcome Intent") {
       whatsappService.sendMediaMessage(From, response.body, [
-        "https://lh3.googleusercontent.com/MKFOXKJRiXkd1VfeU8qX38zjMnMmut3UppdYTXcOHKRkVvmfk-ECy7pd3de6kTz5Sq4=s180-rw",
+        "https://static.intercomassets.com/avatars/1980366/square_128/Ottos_para_whatsapp-01-1561732255.png?1561732255",
       ]);
       res.status(204).send();
-      return 
+      return
     }
 
     const parsedResponse = whatsappService.incomingMessageFromEndpoint(
@@ -41,7 +41,7 @@ class MessagingController {
         "whatsapp:+558398949349",
         response.body,
         [
-          "https://lh3.googleusercontent.com/MKFOXKJRiXkd1VfeU8qX38zjMnMmut3UppdYTXcOHKRkVvmfk-ECy7pd3de6kTz5Sq4=s180-rw",
+          "https://static.intercomassets.com/avatars/1980366/square_128/Ottos_para_whatsapp-01-1561732255.png?1561732255",
         ]
       );
       res.status(204).send();

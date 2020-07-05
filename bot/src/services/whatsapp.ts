@@ -7,7 +7,7 @@ const BOT_NUMBER = 'whatsapp:+14155238886'
 
 export const useWhatsappService = () => {
   const twilioSid: string = process.env.TWILIO_SID
-  const twilioToken: string = process.env.TWILIO_SID
+  const twilioToken: string = process.env.TWILIO_TOKEN
 
   // Twilio Client
   const twilioClient = twilio(twilioSid, twilioToken)
