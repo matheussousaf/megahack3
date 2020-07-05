@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import * as bodyParser from "body-parser";
 import cors from "cors";
-import MessagingController from "./controllers/MessagingController";
+import MessagingController from "@controllers/MessagingController";
 
 require("dotenv").config();
 

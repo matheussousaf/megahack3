@@ -1,7 +1,6 @@
 import {
   PrimaryGeneratedColumn,
   Column,
-  Unique,
   CreateDateColumn,
   UpdateDateColumn,
   Entity,
@@ -29,6 +28,9 @@ export class User {
   @Column()
   @CreateDateColumn()
   createdAt: Date;
+
+  @Column()
+  points: number = 0;
 
   @Column()
   @UpdateDateColumn()
