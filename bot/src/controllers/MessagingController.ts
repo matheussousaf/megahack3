@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { getResponse } from "../services/bot";
-import { useWhatsappService } from "src/services/whatsapp";
+import { getResponse } from "@services/bot";
+import { useWhatsappService } from "@services/whatsapp";
 require("dotenv").config();
 
 class MessagingController {
@@ -16,7 +16,8 @@ class MessagingController {
       whatsappService.sendMediaMessage(From, response.body, [
         "https://lh3.googleusercontent.com/MKFOXKJRiXkd1VfeU8qX38zjMnMmut3UppdYTXcOHKRkVvmfk-ECy7pd3de6kTz5Sq4=s180-rw",
       ]);
-      return;
+      res.status(204).send();
+      return 
     }
 
     const parsedResponse = whatsappService.incomingMessageFromEndpoint(
@@ -43,7 +44,8 @@ class MessagingController {
           "https://lh3.googleusercontent.com/MKFOXKJRiXkd1VfeU8qX38zjMnMmut3UppdYTXcOHKRkVvmfk-ECy7pd3de6kTz5Sq4=s180-rw",
         ]
       );
-      return;
+      res.status(204).send();
+      return
     }
 
     const parsedResponse = whatsappService.incomingMessageFromEndpoint(
