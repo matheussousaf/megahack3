@@ -36,7 +36,6 @@ export const useSocket = (app: any, port: string) => {
           };
 
           if (response.intent === "Make an Activity") {
-            console.log("Opa");
             content.media = {
               type: "question",
               subject: "Matemática",
